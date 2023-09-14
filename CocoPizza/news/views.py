@@ -1,4 +1,13 @@
 from django.shortcuts import render
+from django.views.generic import ListView, DetailView
 
-def news_page(request):
-    return render(request, 'news/news.html')
+from .models import Article
+
+class ArticlesListView(ListView):
+    model = Article
+    template_name = "news/news.html"
+
+
+class ArticleDetailView(DetailView):
+    model = Article
+    template_name = "news/article.html"

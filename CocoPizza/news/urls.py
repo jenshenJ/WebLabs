@@ -1,8 +1,8 @@
 from django.urls import path
-from . import views
 
-app_name = 'info'
+from news.views import ArticleDetailView, ArticlesListView
 
 urlpatterns = [
-    path('', views.news_page, name='news_page')
+    path("<int:pk>/", ArticleDetailView.as_view(), name="article"),
+    path("", ArticlesListView.as_view(), name="news"),
 ]
